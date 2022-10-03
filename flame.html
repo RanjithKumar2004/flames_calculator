@@ -1,0 +1,67 @@
+<html>
+    <head>
+    </head>
+    <body style="background-color:aqua;">
+        <span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;display:inline-block;font-size:30px;margin-left:330px;margin-top:100px;color:crimson;">ENTER YOUR NAME:</span><input id="name" type="text" style="font-size:30px;margin-left:70px;"><br><br><br>
+        <span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:30px;margin-left:280px;color:crimson;">ENTER YOUR PARTNER NAME:</span><input id="fname" type="text" style="font-size:30px;"><br>
+        <button onclick="act()" style="font-size:30px;margin-left:650px;margin-top:50px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:darkmagenta;">CALCULATE</button><p id="t" style="color:blueviolet;font-size:40px;margin-left:300px;"></p>
+        <img id="i" style="margin-left:650px;margin-bottom:20px;">
+        <script>
+            function act(){
+                var n=document.querySelector("#name").value;        
+                var fn=document.querySelector("#fname").value;
+                var name1=n.split('');
+                var name2=fn.split('');
+                var c1=n.length;
+                var c2=fn.length;
+                var count=n.length+fn.length-1;
+                for (var i=0;i<c1;i++){
+		for (var j=0;j<c2;j++){
+			if (name1[i]==name2[j]){
+				count-=2;
+				name2[j]='1';
+				break;
+			}
+		}
+	}
+   
+     var flames=['FRIENDS','LOVE','AFFECTION','MARRIAGE','ENEMY','SISTER'];
+	var temp=['f','l','a','m','e','s'];
+	var l=0;
+	var s=6;
+    
+	while (l<5){
+	var k=(count%s)+1;
+	flames[count%s]='1';
+	for (var i=0;i<s;i++){
+		
+		temp[i]=flames[(i+k)%s];
+	}
+	for (var i=0;i<6;i++){
+	flames[i]=temp[i];
+}
+	s--;
+	l++;	
+}
+var r=flames[0];
+var results;
+results="The Relationship Between "+n+" and "+fn+" is "+r ;
+document.querySelector("#t").innerHTML=results;
+if (r=="FRIENDS"){
+document.querySelector("#i").src="friends.jpg";}
+if (r=="LOVE"){
+document.querySelector("#i").src="lovers.jpg";}
+if (r=="AFFECTION"){
+document.querySelector("#i").src="affection.jpg";}
+if (r=="MARRIAGE"){
+document.querySelector("#i").src="marriage.jpg";}
+if (r=="ENEMY"){
+document.querySelector("#i").src="enemy.jpg";}
+if (r=="SISTER"){
+document.querySelector("#i").src="sibling.jpg";}
+
+
+            }
+        </script>
+    </body>
+</html>
